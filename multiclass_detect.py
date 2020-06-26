@@ -24,12 +24,15 @@ scissors - with training pictures of scissors
 Same folder structure must be provided for validation data as well
 """
 
+from recognize_video import recognize_from_video
+
 # input parameters for different workflows
 SHOW_DATASET_EXAMPLE = False
 USE_TEST_FOLDERS = False
 TARGET_SIZE = 200
 USE_INCEPTION_MODEL = True
 AUGMENT = True
+FROM_VIDEO=True
 is_plot_accuracy = True # at the meantime accuracy plotted only for new models
 # TODO: use CSVLogger to store statistics along with model
 #
@@ -127,5 +130,8 @@ else:
 if is_plot_accuracy:
     plot_accuracy(history, VALIDATE)
 
-recognize_user_images(model, labels, TARGET_SIZE, TARGET_SIZE)
+if FROM_VIDEO:
+    recognize_from_video(model, labels)
+else:
+    recognize_user_images(model, labels, TARGET_SIZE, TARGET_SIZE)
 

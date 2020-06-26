@@ -9,7 +9,6 @@ import os
 from easygui import fileopenbox
 from keras_preprocessing import image
 
-
 # prints given images in automaticaly defined grid XnY
 def print_images(images, title, img_titles=None):
     ncols = ceil(sqrt(len(images)))
